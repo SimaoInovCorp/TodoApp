@@ -9,7 +9,7 @@ Route::inertia('/', 'Welcome', [
 ])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::redirect('/dashboard', '/tasks')->name('dashboard');
+    Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
 
     Route::resource('tasks', TaskController::class)
         ->only(['index', 'store', 'update', 'destroy']);

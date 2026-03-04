@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
-import AppLogo from '@/components/AppLogo.vue';
-import NavFooter from '@/components/NavFooter.vue';
+import { CheckSquare } from 'lucide-vue-next';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import {
@@ -14,27 +11,13 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
-
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        title: 'Tasks',
+        href: '/tasks',
+        icon: CheckSquare,
     },
 ];
 </script>
@@ -45,9 +28,25 @@ const footerNavItems: NavItem[] = [
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="dashboard()">
-                            <AppLogo />
-                        </Link>
+                        <a
+                            href="https://www.inovcorp.com/pt/home"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex cursor-pointer items-center gap-0.5 rounded-md px-2 py-1 tracking-tighter transition-all duration-200 select-none hover:scale-105 hover:bg-primary/10 hover:shadow-lg"
+                        >
+                            <span class="text-base font-bold">
+                                Ino<span
+                                    class="align-middle text-2xl font-extrabold text-primary"
+                                    style="
+                                        text-shadow:
+                                            1px 1px 6px #b0b6be,
+                                            0 0 2px #e0e0e0;
+                                        letter-spacing: 0.04em;
+                                    "
+                                    >V</span
+                                >Corp
+                            </span>
+                        </a>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarMenu>
@@ -58,7 +57,6 @@ const footerNavItems: NavItem[] = [
         </SidebarContent>
 
         <SidebarFooter>
-            <NavFooter :items="footerNavItems" />
             <NavUser />
         </SidebarFooter>
     </Sidebar>
